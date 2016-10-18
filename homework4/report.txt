@@ -1,0 +1,86 @@
+0. There are two methods for building a heap from an unsorted array:
+        (1) insert each element into the heap  --- O(nlogn)
+        (2) heapify (top-down)                 --- O(n)
+      
+        (a) (theoretically) Derive their time complexities.
+        (b) (empirically)   Use a long list of random numbers to show the difference in time.
+        What about sorted or reversely-sorted numbers?
+
+        (a): Suppose the length of unsorted array is n. O(n) is for traversing the entire array while O(log(n)) is for inserting a single element into heap.
+        Thus inserting each element into the heap will cost O(n * log(n)) which is O(nlog(n)).
+        For heapify, the tighter time complexity is O(n). Top-down heapify first treats each leaves as a individual heap. Assume the height of the heap binary
+        tree is h, there will be at most 2^h leaves. And they have no need to take any actions. So the time cost in leave level will be 0. Next we can look one
+        level up. In level h-1, we have exactly 2^(h-1) leaves. And they will sink down to one level in worst case. Thus the time cost in this level will be 
+        1 * 2^(h-1). In general, the total time complexity:
+                T(n)    = sum(j * 2^(h-j)) for 0 <= j <= h;
+                        = sum(j * (2^h / 2^j)) for 0 <= j <= h;
+                        = 2^h * sum(j / 2^j) for 0 <= j <= h;
+                        <= 2^h * sum(j / 2^j) for 0 <= j <= Infinity;
+                        <= 2^(h+1)
+        Since 2^(h+1) - 1 = n, so the upper bound of heapify will be O(n)
+
+
+        (b): I used 100000 random numbers with the range from 0 to 100000 and here is the results:
+                (1). For unordered random list after execute %timeit heapq.heapify(list): 100 loops, best of 3: 8.55 ms per loop;
+                (2). For ordered list after execute %timeit heapq.heapify(list): 100 loops, best of 3: 8.4 ms per loop;
+                (3). For reverse ordered list after execute %timeit heapq.heapify(list): 100 loops, best of 3: 4.66 ms per loop.
+
+        If we double the length of list, the results will be:
+                (1). 100 loops, best of 3: 17.7 ms per loop;
+                (2). 100 loops, best of 3: 17.8 ms per loop;
+                (3). 100 loops, best of 3: 9.63 ms per loop.
+
+        Above results show that the heapify operation has linear time complexity. And reverse ordered list has slightly better performance.
+
+        The result of insert each element into a heap shows as follow (100000 and 200000 elements):
+                100000 elements: 10 loops, best of 3: 19.8 ms per loop
+                200000 elements: 10 loops, best of 3: 48.6 ms per loop 
+        We can see that the time complexity is slightly worse than linear.
+                
+
+1. Q: What are the time complexities of these algorithms?
+        For algorithm (a), T(n) = n^2 * log(n^2)
+                                = 2 * n^2 * log(n)
+                                = O((n^2)log(n))
+        
+        For algorithm (b), T(n) = n^2 + n^2 + nlog(n)
+                                = O(n^2)
+
+        For algorithm (c), T(n) = nlog(n) + n
+                                = O(nlog(n))
+
+2. Q: What is the complexity? Write down the detailed analysis in report.txt.
+        Suppose we finally merge k sorted list.
+        The time complexity from merge is going to be O(k) + O(n) + O(nlog(k))
+        Each time we split the list to k and reduce the size to n/k.
+        Hence T(n)      = O(k) + O(n) + O(nlog(k)) + k * T(n/k)
+                        = O(nlog(k)) + k * T(n/k)
+                        = sum((k^i) * (n / k^i) * log(k))
+                        = sum(n * log(k))
+                        = n * (log(n) / log(k)) * log(k)
+                        = O(nlog(n))
+
+3. Q: What is your complexity? Write down the detailed analysis in report.txt.
+        O(n) for going through the entire array.
+        For each element we push into heap, there is O(log(k)).
+        So the total time complexity is O(nlog(k))
+
+
+Debriefing (required!): --------------------------
+
+1. Approximately how many hours did you spend on this assignment?
+        4 hours
+2. Would you rate it as easy, moderate, or difficult?
+        moderate
+3. Did you work on it mostly alone, or mostly with other people?
+Note you are encouraged to discuss with your classmates, 
+but each students should submit his/her own code.
+        mostly alone.
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+        90 percent.
+5. Which part(s) of the course you like the most so far?
+        Time complexity analysis, code analysis
+6. Which part(s) of the course you dislike the most so far?
+        To be honest, quiz.
+
+
