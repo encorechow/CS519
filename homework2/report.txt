@@ -1,0 +1,24 @@
+0. Which of the following sorting algorithms are (or can be made) stable?
+        (a) mergesort:  Stable
+        (b) quicksort with the first element as pivot: Stable
+        (c) quicksort with randomized pivot: Unstable
+        (d) selection sort: Stable
+        (e) insertion sort: Stable
+        (f) heap sort --- not covered yet (see CLRS Ch. 6): Unstable
+
+Debriefing (required!): --------------------------
+
+1. Approximately how many hours did you spend on this assignment?
+        3 hours.
+2. Would you rate it as easy, moderate, or difficult?
+        Moderate.
+3. Did you work on it mostly alone, or mostly with other people?
+Note you are encouraged to discuss with your classmates, 
+but each students should submit his/her own code.
+        Half and half.
+
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+        90%.
+5. Any other comments?
+        Good lecture.
+               
