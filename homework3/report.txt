@@ -1,0 +1,15 @@
+1. Approximately how many hours did you spend on this assignment?
+        About 2 hours.
+2. Would you rate it as easy, moderate, or difficult?
+        Moderate.
+3. Did you work on it mostly alone, or mostly with other people?
+Note you are encouraged to discuss with your classmates, 
+but each students should submit his/her own code.
+        Mostly alone, and discussed several times with Shujin Wu.
+4. How deeply do you feel you understand the material it covers (0%–100%)? 
+        90 percent.
+[UPDATE]
+5. Which part(s) of the course you like the most so far?
+        Digging into and analyzing the detail of each algorithm.
+6. Which part(s) of the course you dislike the most so far?
+        Spending too much time on the solution of homework, which can be used to explore more problems.
