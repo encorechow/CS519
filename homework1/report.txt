@@ -1,0 +1,37 @@
+0. Q: What's the best-case, worst-case, and average-case time complexities of quicksort.
+   Briefly explain each case.
+        A:      best-case: O(nlog(n)), this occurs when the partitions are fairly balanced, which means the size of two parts are equal or within 1 of difference.
+                worst-case: O(n^2), this occurs when the partitions are never balanced, which means we always choose the largest or smallest element as pivot.
+                average-case: O(nlog(n)), the average-case should never be better than best-case or worse than worst-case. So assume we have partitions with 1/4 elements on left and 3/4 elements on right. Than the height of the subproblem tree will be log(4/3, n). Thus the total partitioning time will be O(nlog(4/3,n)). Since the 4/3 is a constant base, we can just ignore it in big-O notation. So the overall average-case will be O(nlog(n)).
+
+
+
+1. Q: What's the best-case, worst-case, and average-case time complexities? Briefly explain.
+        A:      best-case: O(n), This occurs when the partitions are fairly balanced. Unlike the quicksort, quickselect only need to go through a half of the array after partition. So if the size of right half equal to left half, each time we are able to throw away a half of them, which means the time complexity is going to be n + n/2 + n/4 + ...  = (1 + 1/2 + 1/4 + ...) n < 2n. Thus overall it's going to be O(n)
+                worst-case: O(n^2). Tis occurs when the partitions are extremely unbalanced, which means the pivots are always the largest or smallest element in the array. Each time you will not able to throw away any element except the pivot itself. Hence time complexity is going to be n + n-1 + n-2 + ...+ 1, which is obviously O(n^2). 
+                average-case: O(n), On average, the time complexity is also going to be O(n). We can just consider the constant part when we analyze the best-case. No matter what constant they are, for example, (1 + 2/3 + 1/3 + ...) n, finally the overall time complexity is guarantee to be cn(where c is a constant). Hence we have average time complexity O(n) for quickselect. 
+                
+
+2. Q: What are the time complexities for the operations implemented?
+        A:      Suppose n is the total number of nodes in BST.
+                sorted: O(n) on best, worst, average cases. The reason is that sorted always go through the entire tree to retrieve the value of each node and put them into an array.  
+                insert: O(n) on worst case, O(log(n)) on average case, O(1) on best case. If the BST is extremely unbalanced, which means the height of the tree equal to the total number of nodes, and the element that we are trying to insert should be put at the end of the tree, we have to go through the entire tree. Hence raise O(n) time complexity. On average we have O(log(n)) because we only need to go through one part of the tree. Best case is that the value should be inserted right after
+the root node, which is apparently O(1)  
+                search: O(n) on worst case, O(log(n)) on average case, O(1) on best case. Since search calls the same helper function as insert, so the time complexity is the same.
+
+
+Debriefing (required!): --------------------------
+
+1. Approximately how many hours did you spend on this assignment?
+        3 hours.
+2. Would you rate it as easy, moderate, or difficult?
+        Moderate I felt.
+3. Did you work on it mostly alone, or mostly with other people?
+        Mostly alone.
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+        90%, with 10% needs to be review multiple times.
+5. Any other comments?
+        The difficulties of the assignment is fairly appropriate in this level. If instructor can cover the way to implement an algorithm not only in python, but also in other language, let's say java, I will be very appreciated (I know we don't have so much time, but at least go through one or two to illustrate the right way to code with other language). In addition, if the test cases can be provided more, that's also great. 
+
+        
+
