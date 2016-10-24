@@ -1,0 +1,50 @@
+0. Compare two recursive implementations of fib (naive vs. memoized).
+   (a) What's exact complexity of naive in theory?
+        In the naive implementation of fib, the time complexity T(n) = T(n-1) + T(n-2) + O(1). Dissolve this we get T(n) = 2^n. But this is still not the tight bound. The exact complexity is T(n) = 1.6 ^ n by using generating function to dissolve above formula.
+
+   (b) Let's say you know it's O(a^n); can you curve-fit to determine the approximate value of a?
+        Assume we have T(n) = O(a^n) + b, we can set logarithmic scale for the function and get log(T(n)) = n*log(a) + b. By using gnuplot, I got the result:
+        For function f(x) = a * x + b (f(x) is log(y))
+            a = 0.430785
+            b = -14.7517
+        We can solve this back to original scale: a = log(u) -> u = 1.5364 which is nearly equal to 1.6.
+        So y = 1.6 ^ x / e ^ b, That is, time complexity T(n) = 1.5364 ^ n, which is pretty close to the theoratical time complexity.
+
+
+   (c) Does this value match the theoretical complexity?
+        Yes it pretty close to what we got theoratically with bias in it.
+
+
+1. What's the complexity?
+
+    From my top-down solution, There are O(n) for recursively computing the optimal solution and O(n) for backtracking the result. So final time complexity is O(n) + O(n) which is O(n) asymptotically.
+
+    From my bottom-up solution, There are O(n) for going through each element and O(n) for backtracking the result. So final time complexity is O(n) + O(n) which is O(n) asymptotically.
+
+2. What's the complexity of this DP?
+
+    The time complexity of this DP contains a nested for loop inside main loop, so it is O(n^2).
+
+   What's the name of this famous number series?
+
+    The name is catalan number series.
+
+
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+    Zheng Zhou
+1. Approximately how many hours did you spend on this assignment?
+    6 Hours
+2. Would you rate it as easy, moderate, or difficult?
+    Moderate
+3. Did you work on it mostly alone, or mostly with other people?
+    Mostly alone
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+    90 percent
+5. Which part(s) of the course you like the most so far?
+    Go through the programming detail of each problem.
+6. Which part(s) of the course you dislike the most so far?
+    Nothing.
+
