@@ -1,0 +1,65 @@
+0. For each of the coding problems below:
+   (a) Describe an exhaustive solution, and analyze complexity (might be exponential).
+        For unbounded knapsack problem, we can just exhaustively find all possible ways to meet the weight constraint and choose the best one as our solution. To do that, we have to recursively pick up each item. This will give us asymptotically O(2^n) time complexity.
+
+        For bounded knapsack problem, we can also exhaustively find all possible ways to meet the weight constraint, but furthermore we need to take the number of items into account. Interestingly, this may not increase the time complexity because the possible ways are less than unbounded problem. But overall the time complexity is still asymptotically O(2^n).
+
+        For longest increasing subsequence, likewise we can exhaustively find all subsequence of an array and find the longest one. This will give us O(2^n) time complexity.
+
+   (b) Describe a greedy solution, and analyze complexity.
+        We can greedily find the most valuable item each time by build a weight-value ratio table. Each time we pick up the item with maximum weight-value ratio. This gives us O(n) time complexity since we only need to go through the array once.
+
+   (c) Show a counterexample to the greedy solution.
+        Suppose we have a bag that W = 5, and items [(2,5), (3, 7), (1,1)].
+                    0       1       2
+            w       2       3       1
+
+            v       5       7       1
+
+            ratio:  2.5     2.33    1
+
+        if we always choose the most valuable one, which is item 0, we will end up with 2*item[0] + item[2] = 11. But he optimal solution is item[0] + item[1] = 12.
+
+   (d) Theoretically, is the top-down solution faster, or the bottom-one one faster?
+
+        Theoretically, bottom-up solution is faster then top-down since top-down has extra recursion calls and returning memorization still has to recursively call the function one level deeper.
+
+   (e) Empirically, which one is faster? (Try some long random lists)
+
+        I experiment 1000 items with random values and weights for unbounded, the result is as expected. Top down is slower than bottom up about 2 times. Here is the result:
+        top down:        10 loops, best of 3: 24.9 ms per loop
+        bottom up:       100 loops, best of 3: 12 ms per loop
+
+        I also experiment 1000 items with random values, weights and counts for bounded problem with W = 1000, the result as follow:
+        top down:        1 loops, best of 3: 166 ms per loop
+        bottom up:       10 loops, best of 3: 87.2 ms per loop
+
+
+1. Q: What are the time and space complexities?
+
+        Suppose the input weight is W and item size is N, The time complexities of my unbounded algorithm is obviously O(NW) because of two embedded loops. Space complexities is O(2W) which is asymptotically O(W).
+
+2. Q: What are the time and space complexities?
+        Suppose the input weight is W and item size is N, the largest count among all items is C, The time complexities of my bounded algorithm is O(N*W*C) which is the time that three embedded loops have spent. Space complexities is O(2NW) which is asymptotically O(NW).
+
+3. Q: What are the time and space complexities?
+        Suppose the N is the size of input sequence, the time complexities will be O(N^2) since we have to iterate back from every index to beginning.
+
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+    Zheng Zhou
+1. Approximately how many hours did you spend on this assignment?
+    4 hours.
+2. Would you rate it as easy, moderate, or difficult?
+    moderate.
+3. Did you work on it mostly alone, or mostly with other people?
+    mostly alone.
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+    about 80 percent this time.
+5. Which part(s) of the course you like the most so far?
+    talking about different algorithm for a problem.
+6. Which part(s) of the course you dislike the most so far?
+    Nothing.
+
