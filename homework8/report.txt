@@ -1,0 +1,49 @@
+0. (a) Describe a greedy algorithm for LIS and show a counter example.
+        As we are seeking for greedy, we always consider the best solution at current moment. So if we want to get the longest increasing subsequence, we may want to begin from the element that has smallest lexicographical order to ensure the rest of subsequence can be as long as possible. for example, given "zhabx", the optimal solution is "abx", since the a has the smallest order comparing with previous two.
+        Counterexample for this algorithm is quite straightforward: given "xbdfa", the optimal solution is "bdf", but this algorithm will give "a", which is not optimal.
+
+
+
+   (b) Describe an exhaustive algorithm for TSP and analyze complexity.
+        The exhaustive algorithm for TSP is just finding all possible combination from 0 back to 0, and pick the minimum cost from these tour combinations.
+        The time complexity T(n) = T(n-1) * O(n) = O(n!). For reasoning the derivation of this formula, let's say we have n cities and start at 0. From 0, we can exhaustively go to the rest of cities as our next destination, which costs O(n) time. And recursively, we only exclude one city at a time, so for the next city of all n cities, we also treat the rest of (n-1) cities as next destination, etc. So finally we will have O(n!) time complexity.
+
+
+1. Q: What are the time and space complexities?
+        Suppose we have a string with length of n.
+        my algorithm derive T(n) = T(n-1) + O(n) which is O(n^2) time complexity. This is because if we want to know the LIS of the string with length n, there are n possible ending characters. So we have to go through the entire string in order to find the optima. But at the moment that ending character is n, we have to derive the optimal longest increasing subsequence ending with n from all previous n-1 results. That gives asymptotically O(n) time. So in the end we have O(n^2) time complexity.
+
+        The space complexity is only O(2n), which is O(n) since I only using two dictionaries with total n keys.
+
+2.  Write the subproblem definition, recurrence relation, and space/time complexities in report.txt.
+        subproblem definition: suppose we have a visited set *vset*, and destination city des, the subproblem can be expressed as:
+            what is the minimum cost from city 0 to the city des, given the a set of cities that are visited before the des.
+
+        recurrence relation: suppose vset is the visited set and prev is the city that visited right before des, vset_ex_prev is the visited set the same as vset except it excludes the prev city. So we have
+            opt(vset, des) = min(opt(vset_ex_prev, prev)) + costs[prev][des]for prev in vset
+
+        time complexity: my algorithm first finds all possible combinations of visited set, which cost O(2^n), and then sort this list according to their length, which cost O(2^n * log(2^n)). In the main loop, the algorithm goes through all possible visited set in O(2^n) time and for each visited set, the algorithm traverses the total number of cities as destination and goes through the visited set for each destination. That will cost obviously O(n^2) time. Therefore, the total time complexity will be O(2^n * n^2).
+
+        space complexity: The space complexity is O(2^n * n) since we only need to store what we computed. For going through the visited set, the space complexity is not growing as n^2 since they have distinct keys while we exclude the prev from visited key set.
+
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+    Zheng Zhou
+1. Approximately how many hours did you spend on this assignment?
+    5 hours
+2. Would you rate it as easy, moderate, or difficult?
+    moderate
+3. Did you work on it mostly alone, or mostly with other people?
+    mostly alone
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+    90 percent
+5. Which part(s) of the course you like the most so far?
+    Still the part that talks a lot of details about the problems
+6. Which part(s) of the course you dislike the most so far?
+    All things seem good for me.
+
+This section is intended to help us calibrate the homework assignments.
+Your answers to this section will *not* affect your grade; however, skipping it
+will certainly do.
