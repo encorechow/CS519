@@ -1,0 +1,36 @@
+1. Topological Sort time complexity and space complexity
+    A:  Time complexity of iteration version: O(|E|) for constructing the adjacency list representation of the graph. O(|V|) for reach out each node. So total time complexity will be O(|E|+|V|).
+
+        Time complexity of recursive version: Same as the iteration version which is O(|E|) for construction O(|V|) for visit each node.
+
+        Space complexity of iteration version: O(|E|) for the adjacency list and O(|V|) for the candidates set. So total space complexity is O(|E| + |V|)
+
+        Space complexity of recursive version: O(|E|) for the adjacency list and O(2*|V|) for the visited set and exploring set. So total space complexity is O(|E| + |V|)
+
+2. Viterbi Algorithm For Longest Path in DAG time complexity and space complexity
+    A:  Time complexity and space complexity of forward and backward update are essentially the same. So here only discusses one of them:
+        Time complexity: O(|E| + |V|) for topological sort. Plus O(|E|) for constructing the graph. Additionally O(|V|) for going through each node and O(|E|) for updating the longest path ending with each node. So total time complexity is O(|E| + |V|) + 2*O(|E|) + O(|V|) = O(|E| + |V|)
+        Space complexity: O(|E|) for the graph representation plus O(|V|) for the dp table. So totally it is O(|E| + |V|)
+
+
+3. Dijkstra time complexity and space complexity
+    A:  Time complexity: O(|E|) for constructing the graph, O(|V|) for looking up the nodes. O(long|V|) for popmin each time. O(E) for go through the edges for each node's neighbors. O(log|V|) for change the priority of the node when looks up. So totally it is O(|E|log|V| + |V|log|V|).
+        Space complexity: O(|E|) for representing the graph, at most O(|V|) for the heap dictionary, plus a visited set at most O(|V|) and a back tracking array O(|V|). So totally it is O(|E| + |V|).
+
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+    Zheng Zhou
+1. Approximately how many hours did you spend on this assignment?
+    6 hours
+2. Would you rate it as easy, moderate, or difficult?
+    moderate
+3. Did you work on it mostly alone, or mostly with other people?
+    mostly alone, sometimes working with Shujin Wu
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+    90%
+5. Which part(s) of the course you like the most so far?
+    The discussion of details of the algorithm and python tricks
+6. Which part(s) of the course you dislike the most so far?
+    Nothing for now.
