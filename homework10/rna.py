@@ -271,7 +271,6 @@ def kbest(seq, K):
                 cand = _qselect(cand, K)
 
             heapify(cand)
-            print("-----")
             while len(dp[i, j]) < K and len(cand) > 0:
                 _append_next(dp, i, j, cand, seq, visited)
 

@@ -28,7 +28,6 @@ def best(V, coins):
                     dp[v, idx] = exclude
                     back[v,idx] = 0
 
-    #pp.pprint(dict(back))
     return dp[V, len(coins)-1], _back_track(V, coins, back)
 
 def _back_track(V, coins, back):

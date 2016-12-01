@@ -14,7 +14,7 @@
 
 
 3. Dijkstra time complexity and space complexity
-    A:  Time complexity: O(|E|) for constructing the graph, O(|V|) for looking up the nodes. O(long|V|) for popmin each time. O(E) for go through the edges for each node's neighbors. O(log|V|) for change the priority of the node when looks up. So totally it is O(|E|log|V| + |V|log|V|).
+    A:  Time complexity: O(|E|) for constructing the graph, O(|V|) for looking up the nodes. O(log|V|) for popmin each time. O(E) for go through the edges for each node's neighbors. O(log|V|) for change the priority of the node when looks up. So totally it is O(|E|log|V| + |V|log|V|).
         Space complexity: O(|E|) for representing the graph, at most O(|V|) for the heap dictionary, plus a visited set at most O(|V|) and a back tracking array O(|V|). So totally it is O(|E| + |V|).
 
 

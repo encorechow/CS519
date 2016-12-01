@@ -7,7 +7,7 @@ def ksmallest(k, arr):
     for ele in arr:
         if len(heap) < k:
             hq.heappush(heap, -ele)
-        elif len(heap) == k and abs(heap[0]) > ele:
+        elif len(heap) == k and -heap[0] > ele:
             hq.heappushpop(heap, -ele)
     return sorted([-ele for ele in heap])
 

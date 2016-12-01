@@ -1,0 +1,26 @@
+Question 1. how can you make insertion sort run in O(nlogn) time (without heap)?
+    Correction: I answered binary search tree, it should be using balanced binary search tree to store the elements.
+
+Question 2 (a).
+    Correction: I answered O(1), it should be amortized O(1).
+
+Question 2 (c).
+    Correction: I answered O(1), it should be amortized O(1).
+
+Question 2 (c).
+    Correction: I answered O(1), it should be amortized O(1).
+
+Question 3. Fill in the following code for stable 3-way partition quicksort with randomized point.
+    Correction: Forget to recursively call the function in the last line. I answered left + mid + right, it should be qsort(left) + mid + qsort(right)
+
+Question 5.
+    Correction:
+
+    def find(t, x, best=None):
+        if t==[]:
+            return best
+        if best==None or abs(root - x) < abs(best - x):
+            best = root
+        if root > x:
+            return find(left, x, best)
+        return find(right, x, best)
