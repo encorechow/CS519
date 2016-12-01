@@ -33,7 +33,6 @@ def shortest(n, edges):
                 if (neighbor not in hd.keys()) or (hd[neighbor] > cost_from_prev):
                     hd[neighbor] = cost_from_prev
                     prev[neighbor] = prev_node
-
     return None
 
 def _backtrack(n, back):
