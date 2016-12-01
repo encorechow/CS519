@@ -1,6 +1,5 @@
 from collections import defaultdict
 from heapdict import heapdict
-
 def shortest(n, edges):
     '''  Given an undirected graph, find the shortest path from source (node 0)
     to target (node n-1).
