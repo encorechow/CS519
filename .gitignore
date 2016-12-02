@@ -7,4 +7,8 @@ Debugging_Guidelines.pdf
 .ipynb_checkpoints
 */solution*
 *.tar.gz
+<<<<<<< HEAD
 *.zip
+=======
+corretions
+>>>>>>> a61968e48d0e8de8b6cefaabc1efdbaa3bccdaaa

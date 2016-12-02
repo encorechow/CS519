@@ -1,0 +1,51 @@
+1. [Part (a) WILL BE GRADED]
+
+Given k pairs of lists A_i and B_i (0 <= i < k),
+each with n sorted numbers,
+find the n smallest pairs in all k \times n^2 pairs,
+and we say (x,y) < (x', y') if and only if x+y < x'+y'.
+Tie-breaking: lexicographical (i.e., prefer smaller x).
+
+
+(b) Describe two improvements to make it faster (for the cases where k>>n).
+    Analyze their time complexities.
+
+    The time complexity of above nbest algorithm is O(klogk) + O(nlog(n+k)). The first part derived from putting the first element of each list into the candidate heap. The second part O(nlog(n+k)) is spent on push n items into the candidate heap which initially has k elements from the first part of algorithm. So the following improvements will speed up the algorithm based on O(klogk + nlog(n+k)).
+
+    1. The first improvement considers that instead of doing trypush for the first element of each list, we can just pick out the first element in each list and do a heapify on the list. The rest of algorithm remains same. This gives us O(k + nlog(n+k)) time complexity.
+
+    2. The second improvement needs to revise the original algorithm a little bit more. Since k >> n, what we really care about is the n numbers. So we can reduce the problem first to quick select which selects nth smallest element in the list of first k numbers. This will take asymptotically O(k) time. After we picked up nth smallest element, the number that is smaller than nth smallest element will be pushed into the candidate heap and the heap size will be at most n. We finally pop out each element from the heap and get the desired result. This will take O(nlogn).
+
+2. Time complexity and Space complexity
+
+    From my bottom up algorithm, suppose the target value is V and the size of coins is N the space complexity is obvious O(VN). The time complexity is O(VM) where M is the sum of maximum count that each coin can be taken.
+
+
+
+
+
+
+
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+    Zheng Zhou
+1. Approximately how many hours did you spend on this assignment?
+    3 hours
+2. Would you rate it as easy, moderate, or difficult?
+    Moderate
+3. Did you work on it mostly alone, or mostly with other people?
+    Mostly alone
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+    90 percent
+[NEW QUESTIONS]
+5. Did you like the Midterm? If not, which part(s) do you dislike the most?
+    I like the Midterm, but I think it should be definitely improved in multiple ways. The test sheet should remain at least one blank page for revising the wrong answer. The testing time of midterm seems not quite reasonable as well. We should have more time for doing these many questions. The difficulty of problem is moderate.
+
+6. Do you feel this HW (as a second-chance to midterm or as a take-home quiz) is helpful?
+    Yes, That's absolutely helpful. We have more time to thoroughly think the hard problem while we do not have that much time during exam.
+
+This section is intended to help us calibrate the homework assignments.
+Your answers to this section will *not* affect your grade; however, skipping it
+will certainly do.

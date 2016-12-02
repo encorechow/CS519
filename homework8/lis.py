@@ -1,6 +1,9 @@
 from collections import defaultdict, namedtuple
 
 def lis(seq):
+    ''' Find the length and combination of longest increasing subsequence
+    seq -- input string
+    '''
     dp = defaultdict(int)
     opt = 0
     back = defaultdict(lambda : -1)
@@ -21,6 +24,9 @@ def lis(seq):
 
 Res_pair = namedtuple('Res_pair', ['solution','best_idx'])
 def list_topdown(seq):
+    ''' Top-down method of LIS
+    seq -- input string
+    '''
     dp = defaultdict(int)
     opt = [Res_pair(0, -1)]
     back = defaultdict(lambda : -1)
@@ -56,9 +62,8 @@ def _backtrack(seq, back, best_idx):
     res = res[::-1]
     return res
 
+
 print(lis("aebbcg"))
-
-
 print(list_topdown("aebbcg"))
 
 print(list_topdown("bacpsa"))

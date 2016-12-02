@@ -1,0 +1,2 @@
+Question 3:
+    Correction: Right on the answer the statement is false. But wrong on the time complexity analysis. I answered using binary search on linked list, the time will become O(n^2logn). The correct answer is O(n^2)

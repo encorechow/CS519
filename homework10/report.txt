@@ -1,0 +1,58 @@
+
+Suppose n is the length of sequence.
+
+1. Time Complexity and Space Complexity for 1best problem.
+
+    Explanation of the algorithm: this algorithm uses dynamic programming approach that solves the subproblem, which is for any subsequence seq[i, j], Suppose dp[i, j] is the maximum number of matching in seq[i, j], the optimal solution relies on the fact that seq[j] matches with some point t between i and j-1 (i, j-1 inclusive). If they are matched, then dp[i, j] = max(dp[i, t-1] + dp[t+1, j-1] + 1) for t in i to j. Besides, we still need to compute the result regarding if seq[j] is not matched with anyone between i and j-1, then we ignore j to compare the result in seq[i, j-1] with previous maximum matched result. Finally, the answer locate at dp[0, len(seq)-1]
+
+    Time Complexity: O(n) for the split length from 1 to the length of sequence, times O(n) for going through each subsequence with specific split length, times O(n) for checking the best split point over a subsequence. Plus O(n) backtracking. So the total time complexity is O(n^3).
+
+    Space Complexity: I used a 2-D default dictionary so the total time complexity is O(n^2)
+
+
+
+
+2. Time Complexity and Space Complexity for total problem.
+
+    Explanation of the algorithm: this algorithm is quite similar to the 1best problem. But instead of getting the maximum number of matching, we count all possible substructures. The subproblem for this algorithm is for any subsequence seq[i, j], suppose dp[i, j] is the total number of substructures for seq[i, j]. As long as seq[j] matched with the nucleotide between i to j-1, we add the number of all possible substructures into dp[i, j], that is, dp[i, j] += dp[i, t-1] * dp[t+1, j-1] for t in i to j-1. But we also need to count the number of substructures if seq[j] does not match with nucleotide inside that range, which is dp[i, j-1], and we add that into dp[i, j].
+
+    Time complexity: Time complexity for this problem is same as the 1best problem since we only change the max operator to plus, there is no difference asymptotically. So total time complexity is O(n^3).
+
+    Space Complexity: Space complexity for this problem is O(n^2) which is also same as 1best.
+
+
+3. Time Complexity and Space Complexity for kbest problem.
+
+    Explanation of the algorithm: this kbest algorithm combines the k-way mergesort, datastream and nbest algorithms together.
+    the basic idea is still same as 1 best except we consider not only the optimal solution this time, but also k best solutions each time. We maintain a heap for each possible subsequence seq[i, j]. In the heap we store k best solutions for this subsequence. And this comes from previous k best solutions for all possible splits. We use the idea in k-way mergesort to initialize the candidate heap by adding the first element (which is the optimal for that subproblem) of the sorted list that we stored in dp[i, j] . This list guarantee to be sorted since pop the best from candidate each time and appended it into the dp[i, j], then move the index of dp[i, t-1] and dp[t+1, j] one element forward, and push it into candidate heap, which is similar to nbest problem. Finally, the dp[0, len(seq)-1] will contains all k best matching sequence.
+
+    Time complexity: O(n^3) for the same process that we go through in 1best. O(klogk) cost on pop a match from candidate, since I used quick select to pick up k best match from initial list. The total size of the initial candidate will reduce to at most 2*k. So the time spent on pop and push will be O(klogk). O(n^2 * klogk) for appending the match for current i, j into the solution list, which is dp[i, j]. So totally we have O(n^3 + n^2 *klogk).
+
+    Space complexity: O(n^2 * k) for dp dictionary that stores all solution for different ranges. Plus O(n) in the candidate heap. Asymptotically is O(n^2 * k).
+
+    -----Update----
+    For the kbest lazy version:
+
+    Time complexity: much faster than the original kbest since lazy generator only takes and computes the result when they need it. So actually _lazy_generator function only takes O(1) time and the backtrack will take O(nklogk) time. O(n) for backtracking all the way down to the base case, O(logk) for getting one candidate from generator each time. O(k) for retrieving k best solution.
+
+    Space complexity: lazy version adds one more explored dictionary for storing the missing (already taken in some points) item. So asymptotically it is still O(n^2 * k)
+
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+    Zheng Zhou
+1. Approximately how many hours did you spend on this assignment?
+    8 hours
+2. Would you rate it as easy, moderate, or difficult?
+    difficult
+3. Did you work on it mostly alone, or mostly with other people?
+    mostly alone, discussed with Shujin Wu.
+4. How deeply do you feel you understand the material it covers (0%–100%)?
+    90%
+5. Which part(s) of the course you like the most so far?
+    The analogy of different dynamic programming problems is the most interesting part so far.
+6. Which part(s) of the course you dislike the most so far?
+    Quiz and Exam
+
+
