@@ -129,7 +129,7 @@ class MatchInfo():
 
 
 
-def kbest_lazy(seq, K):
+def kbest(seq, K):
     ''' Using generator to lazily get the result.
     '''
     dp = dict()
@@ -237,7 +237,7 @@ def _lazy_generator(dp, K, i ,j, explored, cand, visited):
 
 '''********************************************** normal kbest *****************************************************'''
 
-def kbest(seq, K):
+def kbest_2(seq, K):
     dp = defaultdict(list)
     res = []
 
@@ -320,8 +320,6 @@ def _append_next(dp, i, j, cand, seq, visited):
     else:
         left_num, _ = dp[i, info.t-1][info.li]
         right_num, _ = dp[info.t+1, j-1][info.ri]
-        print(info.t, info.li, info.ri, len(dp[i, info.t-1]), len(dp[info.t+1, j-1]))
-
         if info.li + 1 < len(dp[i, info.t-1]) and (info.t, info.noi, info.li+1, info.ri) not in visited:
             next_lnum, _ = dp[i, info.t-1][info.li+1]
             visited.add((info.t, info.noi, info.li+1, info.ri))
@@ -388,7 +386,5 @@ if __name__ == '__main__':
     print(total('UUUGGCACUA'))
     print(total('GAUGCCGUGUAGUCCAAAGACUUC'))
     print(total('AGGCAUCAAACCCUGCAUGGGAGCG'))
-
-
     print(kbest('CCCGGG',10))
     print(kbest_lazy('CCCGGG',10))
