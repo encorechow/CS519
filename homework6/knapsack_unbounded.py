@@ -1,6 +1,11 @@
+from collections import defaultdict
+
 def best(W, items):
-    dp = [0 for _ in range(W+1)]
-    idx_list = [-1 for _ in range(W+1)]
+    #dp = [0 for _ in range(W+1)]
+    #idx_list = [-1 for _ in range(W+1)]
+
+    dp = defaultdict(int)
+    idx_list = defaultdict(lambda : -1)
     for w in range(1, W + 1):
         max_idx = -1
         for idx, item in enumerate(items):
@@ -12,8 +17,10 @@ def best(W, items):
     return dp[W], _backtrack(W, items, idx_list)
 
 def best_topdown(W, items):
-    dp = [0 for _ in range(W+1)]
-    idx_list = [-1 for _ in range(W+1)]
+    #dp = [0 for _ in range(W+1)]
+    #idx_list = [-1 for _ in range(W+1)]
+    dp = defaultdict(int)
+    idx_list = defaultdict(lambda : -1)
     res = best_topdown_helper(W, items, dp, idx_list)
     return res, _backtrack(W, items, idx_list)
 

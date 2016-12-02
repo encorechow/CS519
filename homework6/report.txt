@@ -62,4 +62,3 @@ Debriefing (required!): --------------------------
     talking about different algorithm for a problem.
 6. Which part(s) of the course you dislike the most so far?
     Nothing.
-
