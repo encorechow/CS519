@@ -1,0 +1,140 @@
+CS 519-005, Algorithms (MS/MEng-level), Fall 2016
+HW9 - Graph Algorithms
+
+See [UPDATE]'s in Topol and Dijkstra.
+
+Due electronically on Canvas on Tuesday Nov 22, 11:59pm.
+No late submission will be accepted.
+
+Include in your submission: report.txt, topol.py, viterbi.py, dijkstra.py.
+viterbi.py will be graded for correctness (1%).
+
+Textbooks for References:
+[1] CLRS Ch. 22 (graph), Ch. 15 (DP)
+[2] my DP tutorial (up to page 16):
+    http://web.engr.oregonstate.edu/~huanlian/slides/COLING-tutorial-anim.pdf
+[3] DPV Ch. 3, 4.2, 4.4, 4.7, 6 (Dasgupta, Papadimitriou, Vazirani)
+    https://www.cs.berkeley.edu/~vazirani/algorithms/chap3.pdf
+    https://www.cs.berkeley.edu/~vazirani/algorithms/chap4.pdf
+    https://www.cs.berkeley.edu/~vazirani/algorithms/chap6.pdf
+[4] KT Ch. 6 (DP)
+    http://www.aw-bc.com/info/kleinberg/assets/downloads/ch6.pdf
+[5] KT slides: Greedy II (Dijkstra)
+    http://www.cs.princeton.edu/~wayne/kleinberg-tardos/
+
+***Please answer time/space complexities for each problem in report.txt.
+
+For problems 1 and 2 below, we use this example:
+   0 --> 2 --> 3 --> 5 --> 6
+      /    \   |  /    \
+     /      \  v /      \
+   1         > 4         > 7
+represented by a pair (n, edges) where n is the number of nodes
+and edges is a list of pairs representing edges:
+
+(8, [(0,2), (1,2), (2,3), (2,4), (3,4), (3,5), (4,5), (5,6), (5,7)])
+
+nodes are always 0..(n-1). edges are directed.
+
+1. Topological Sort
+   
+   For a given directed graph, output a topological order if it exists.
+   
+   [DEPRECATED] 
+   Tie-breaking: whenever you have a choice of vertices to explore,
+   always pick the one with the smallest id.
+   
+   [UPDATE] JUST USE ARBITRARY TIE-BREAKING. This will make the code 
+   and time complexity analysis a lot easier. Plus problem 2 which 
+   depends on this problem uses arbitrary tie-breaking.
+
+   e.g., for the above example:
+
+   >>> order(8, [(0,2), (1,2), (2,3), (2,4), (3,4), (3,5), (4,5), (5,6), (5,7)])
+   [0, 1, 2, 3, 4, 5, 6, 7]
+
+   If we flip the (3,4) edge:
+
+   >>> order(8, [(0,2), (1,2), (2,3), (2,4), (4,3), (3,5), (4,5), (5,6), (5,7)])
+   [0, 1, 2, 4, 3, 5, 6, 7]
+
+   If there is a cycle, output None
+
+   >>> order(4, [(0,1), (1,2), (2,1), (2,3)])
+   None
+   
+   filename: topol.py 
+
+2. [WILL BE GRADED]
+   Viterbi Algorithm For Longest Path in DAG (see DPV 4.7, [2], CLRS problem 15-1)
+   
+   Recall that the Viterbi algorithm has just two steps:
+   a) get a topological order (use problem 1 above)
+   b) follow that order, and do either forward or backward updates
+
+   This algorithm captures all DP problems on graphs (DAGs), for example,
+   longest path, shortest path, number of paths, etc.
+
+   In this problem, given a DAG (guaranteed acyclic!), output a pair (l, p) 
+   where l is the length of the longest path (number of edges), and p is the path. (you can think of each edge being unit cost)
+
+   e.g., for the above example:
+
+   >>> longest(8, [(0,2), (1,2), (2,3), (2,4), (3,4), (3,5), (4,5), (5,6), (5,7)])
+   (5, [0, 2, 3, 4, 5, 6])
+
+   Tie-breaking: arbitrary. any longest path is fine.   
+
+   Filename: viterbi.py
+
+   Note: you can use this program to solve LIS, TSP, knapsacks, MIS, etc.
+
+3. Dijkstra (see CLRS 24.3 and DPV 4.4)
+   
+   Given an undirected graph, find the shortest path from source (node 0)
+   to target (node n-1). 
+   
+   [UPDATE]
+   Edge weights are guaranteed to be non-negative, since Dijkstra doesn't work
+   with negative weights, e.g.
+ 
+       3
+   0 ------ 1   
+     \    /
+    2 \  / -2
+       \/
+       2
+   
+   in this example, Dijkstra would return length 2 (path 0-2), 
+   but path 0-1-2 is better (length 1).
+
+   [UPDATE]
+   For example (return a pair of shortest-distance and shortest-path):
+   
+       1
+   0 ------ 1   
+     \    /  \
+    5 \  /1   \6
+       \/   2  \
+       2 ------ 3
+            
+   >>> shortest(4, [(0,1,1), (0,2,5), (1,2,1), (2,3,2), (1,3,6)])
+   (4, [0,1,2,3])
+
+   [UPDATE] the (2,3) edge should be (2,3,2) not (2,3,1).
+   
+   Filename: dijkstra.py
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+1. Approximately how many hours did you spend on this assignment?
+2. Would you rate it as easy, moderate, or difficult?
+3. Did you work on it mostly alone, or mostly with other people?
+4. How deeply do you feel you understand the material it covers (0%–100%)? 
+5. Which part(s) of the course you like the most so far?
+6. Which part(s) of the course you dislike the most so far?
+
+This section is intended to help us calibrate the homework assignments. 
+Your answers to this section will *not* affect your grade; however, skipping it
+will certainly do.

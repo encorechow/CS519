@@ -1,0 +1,65 @@
+CS 519-005, Algorithms (MS/MEng-level), Fall 2016
+HW8 - DP (part 3)
+
+Due electronically on Canvas on Monday Nov 14, 11:59pm.
+No late submission will be accepted.
+
+Include in your submission: report.txt, lis.py, tsp.py.
+lis.py will be graded for correctness (1%).
+
+Textbooks for References:
+[1] CLRS Ch. 15
+[2] KT Ch. 6, freely available online (strongly recommended!):
+    http://www.aw-bc.com/info/kleinberg/assets/downloads/ch6.pdf
+[3] Wikipedia: Longest Increasing Subsequence
+[4] Wikipedia: Traveling Salesman Problem
+[5] Wikipedia: Held-Karp Algorithm (1962) for TSP
+
+Please answer time/space complexities for each problem in report.txt.
+
+0. (a) Describe a greedy algorithm for LIS and show a counter example.
+   (b) Describe an exhaustive algorithm for TSP and analyze complexity.
+
+1. [WILL BE GRADED]
+   Longest (Strictly) Increasing Subsequence
+   
+   input/output are lower-case strings:
+
+   >>> lis("aebbcg")
+   "abcg"
+
+   >>> lis("zyx")
+   "z"
+
+   tiebreaking: arbitrary. any optimal solution is ok.
+
+   Q: What are the time and space complexities?
+
+   filename: lis.py 
+
+2. Traveling Salesman Problem (TSP).
+   
+   Given an undirected graph of n nodes (0..n-1) representing a road network,
+   the traveling salesman has to start from city 0 and visit each city
+   once and only once, and return to city 0. Find the minimum-length tour (cycle)
+   that satisifies these conditions.
+   
+   You can use whatever input/output format.
+   
+   Write the subproblem definition, recurrence relation, and space/time complexities in report.txt.
+
+   Include at least three testcases.
+
+Debriefing (required!): --------------------------
+
+0. What's your name?
+1. Approximately how many hours did you spend on this assignment?
+2. Would you rate it as easy, moderate, or difficult?
+3. Did you work on it mostly alone, or mostly with other people?
+4. How deeply do you feel you understand the material it covers (0%–100%)? 
+5. Which part(s) of the course you like the most so far?
+6. Which part(s) of the course you dislike the most so far?
+
+This section is intended to help us calibrate the homework assignments. 
+Your answers to this section will *not* affect your grade; however, skipping it
+will certainly do.
